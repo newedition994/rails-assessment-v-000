@@ -40,12 +40,15 @@ $(function () {
 function listenMyAppointments() {
     $("a#appointments").click(function (e) {
         e.preventDefault();
+        //debugger
         fetchAppointments()
     })
 }
 
 function fetchAppointments() {
-    fetch('/users/1/appointments.json')
+    fetch('/users/1/appointments.json', {
+        headers: { 'Contnent-Type': 'application/json' }
+    })
         .then(response => response.json()
             .then(data => createAppointments(data))
         )
@@ -55,7 +58,7 @@ function createAppointments(data) {
     data.forEach((appt) => {
         let appointment = new Appointment(appt)
         let appointmentHTML = appointment.formatDateHtml()
-        $("div#client").append(appointmentHTML + "<br>")
+        $("div#my-scheduled-time").append(appointmentHTML + "<br>")
         console.log("appoinment.formatAdmiredHtml()")
         //document.getElementById("client").innerHTML += appointmentHTML + "<br>";
     })
