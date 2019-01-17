@@ -2,6 +2,7 @@
 $(document).ready(function () {
     listenMyAppointments();
     listingPickedDates();
+    sortByDate();
 });
 
 
@@ -122,6 +123,12 @@ function listingPickedDates() {
     // debugger
     $("a.favored").click(function (e) {
         e.preventDefault();
+        // need to share the this.href with button
+        // set a data attritbute onto the button
+        // look this up and see why it doesn't work
+        // let button = $("#sort")
+        // button.val(this.href)
+        // console.log(this.href)
         $.ajax({
             url: this.href,
             dataType: "json",
@@ -137,7 +144,7 @@ function listingPickedDates() {
             knowledge.forEach((occasion) => {
                 var meeting = new Appointment(occasion);
                 var peopleChoice = meeting.selectedDateAndName()
-                $("div#choosen").append(peopleChoice + "<br>")
+                $("div#choosen").append(peopleChoice)
                 // document.getElementById("choosen").innerHTML = peopleChoice
             })
             // with each appointment data, append a name and date
@@ -149,5 +156,15 @@ function listingPickedDates() {
 }
 
 Appointment.prototype.selectedDateAndName = function () {
-    return `${this.name} has selected this package for ${this.date}.`
+    return `<p>${this.name} has selected this package for ${this.date}.</p>`
+}
+
+
+// we want to sort the appointment in order of when the picture will be taken
+function sortByDate() {
+    $("#sort").click(function (e) {
+        e.preventDefault();
+        console.log(this)
+        // url: /packages/2
+    })
 }
