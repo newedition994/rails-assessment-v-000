@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   
   #get 'pictures/show'
 
-  root 'static_pages#home'
+  root 'static_pages#login'
+
+  get '/home', to: "static_pages#home"
+
   resources :appointments, only: [:index] do
     collection do
       get :recent

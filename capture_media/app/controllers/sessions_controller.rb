@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
     @user = User.find_by(:name params[:user][:name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user), notice: "Welcome back to Capture Media!"
+      redirect_to home_path(@user), notice: "Welcome back to Capture Media!"
     else
-      redirect_to signin_path
+      redirect_to root_path
     end
   end
   
