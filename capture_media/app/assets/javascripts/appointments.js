@@ -166,5 +166,13 @@ function sortByDate() {
         e.preventDefault();
         console.log(this)
         // url: /packages/2
+        $.ajax({
+            url: "/packages/2",
+            dataType: "json",
+            method: "GET"
+        }).success(function (json) {
+            debugger
+            console.log(json["apppointments"])
+        })
     })
 }
