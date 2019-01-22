@@ -177,7 +177,7 @@ function sortByDate() {
             for (let i = 0, len = engage.length; i < len; i++) {
                 //console.log(engage[i]);
                 //console.log(engage[i].name);
-                console.log(engage[i]['date'])
+                console.log(engage[i]['date']) // having a hard time sorting the dates
                 // const time = engage[i]['date']
                 // time.sort(function (a, b) {
                 //     return a - b
