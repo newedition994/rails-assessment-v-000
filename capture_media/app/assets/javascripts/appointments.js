@@ -173,10 +173,16 @@ function sortByDate() {
         }).success(function (json) {
             debugger
             console.log(json["apppointments"])
-            let time = json["appointments"]
-            time.sort(function (a, b) {
-                return a.date - b.date
-            });
+            let engage = json["appointments"]
+            for (let i = 0, len = engage.length; i < len; i++) {
+                //console.log(engage[i]);
+                //console.log(engage[i].name);
+                console.log(engage[i]['date'])
+                // const time = engage[i]['date']
+                // time.sort(function (a, b) {
+                //     return a - b
+                // });
+            }
         })
     })
 }
