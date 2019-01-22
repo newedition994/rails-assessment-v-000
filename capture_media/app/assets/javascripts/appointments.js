@@ -126,9 +126,9 @@ function listingPickedDates() {
         // need to share the this.href with button
         // set a data attritbute onto the button
         // look this up and see why it doesn't work
-        // let button = $("#sort")
-        // button.val(this.href)
-        // console.log(this.href)
+        let button = document.getElementById("sort")
+        button.dataset.url = this.href
+        console.log(button.dataset.url)
         $.ajax({
             url: this.href,
             dataType: "json",
@@ -165,9 +165,11 @@ function sortByDate() {
     $("#sort").click(function (e) {
         e.preventDefault();
         console.log(this)
+        // let button = document.getElementById("sort")
+        var url = this.dataset.url
         // url: /packages/2
         $.ajax({
-            url: "/packages/2",
+            url: url,
             dataType: "json",
             method: "GET"
         }).success(function (json) {
