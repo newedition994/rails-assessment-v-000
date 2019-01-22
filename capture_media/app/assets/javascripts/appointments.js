@@ -195,4 +195,5 @@ function sortByDate() {
 
 // Appointment.prototype.meetUpTime = function () {
 //     // write a function to sort the dates in order in a function
+    // can the return be the same as another prototype function?
 // }
