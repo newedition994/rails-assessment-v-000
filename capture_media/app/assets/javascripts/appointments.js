@@ -178,10 +178,13 @@ function sortByDate() {
                 //console.log(engage[i]);
                 //console.log(engage[i].name);
                 console.log(engage[i]['date']) // having a hard time sorting the dates
-                // const time = engage[i]['date']
-                // time.sort(function (a, b) {
-                //     return a - b
-                // });
+                var time = engage[i]['date']
+                function highest() {
+                    return [].slice.call(time).sort(function (a, b) {
+                        return b - a;
+                    });
+                }
+                highest(time);
             }
         })
     })
