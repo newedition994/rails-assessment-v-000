@@ -174,6 +174,7 @@ function sortByDate() {
             // debugger
             console.log(json["apppointments"])
             let engage = json["appointments"]
+            $("div#choosen").html("")
             let sortedTime = engage.sort((a, b) => {
                 console.log('sorting', a, b);
                 if (a.date > b.date) return 1;
@@ -193,7 +194,8 @@ function sortByDate() {
     })
 }
 
-// Appointment.prototype.meetUpTime = function () {
-//     // write a function to sort the dates in order in a function
+Appointment.prototype.datesInOrder = function () {
+    // write a function to sort the dates in order in a function
+    return `<p>${this.name} has selected this package for ${this.date}.</p>`
     // can the return be the same as another prototype function?
-// }
+}
