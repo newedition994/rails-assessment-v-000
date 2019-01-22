@@ -174,7 +174,6 @@ function sortByDate() {
             // debugger
             console.log(json["apppointments"])
             let engage = json["appointments"]
-
             let sortedTime = engage.sort((a, b) => {
                 console.log('sorting', a, b);
                 if (a.date > b.date) return 1;
@@ -182,6 +181,11 @@ function sortByDate() {
                 else return 0;
             });
             console.log(sortedTime);
+            sortedTime.forEach((time) => {
+                var arrangement = new Appointment(time);
+                var meetUpTime = arrangement.datesInOrder()
+                $("div#choosen").append(meetUpTime)
+            })
         })
             .error(function (response) {
                 console.log("I guess it didn't sort properly", response)
@@ -189,6 +193,6 @@ function sortByDate() {
     })
 }
 
-// Appointment.prototype.selectedDatesOrdered = function () {
+// Appointment.prototype.meetUpTime = function () {
 //     // write a function to sort the dates in order in a function
 // }
