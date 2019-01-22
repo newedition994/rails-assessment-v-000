@@ -171,21 +171,29 @@ function sortByDate() {
             dataType: "json",
             method: "GET"
         }).success(function (json) {
-            debugger
+            // debugger
             console.log(json["apppointments"])
             let engage = json["appointments"]
             for (let i = 0, len = engage.length; i < len; i++) {
                 //console.log(engage[i]);
                 //console.log(engage[i].name);
-                console.log(engage[i]['date']) // having a hard time sorting the dates
+                console.log(engage[i]['date'])
                 var time = engage[i]['date']
-                function highest() {
-                    return [].slice.call(time).sort(function (a, b) {
-                        return b - a;
-                    });
-                }
-                highest(time);
+                debugger
+                // why is time forEach an error?
+                time.forEach((meetup) => {
+                    var arrangement = new Appointment(meetup);
+                    var sortedTime = arrangement.selectedDatesOrdered()
+                    $("div#choosen").append(sortedTime)
+                })
             }
         })
+            .error(function (response) {
+                console.log("I guess it didn't sort properly", response)
+            })
     })
+}
+
+Appointment.prototype.selectedDatesOrdered = function () {
+    // write a function to sort the dates in order in a function
 }
